@@ -1,0 +1,59 @@
+/*------body------------------------------------*/
+body {
+	font-size:11pt;
+}
+
+/*------search_area------------------------------------*/
+#search_area {
+	margin-left:230px;
+	margin-right:auto;
+	border-style:solid;
+	border-color:#E3E3E3;
+	border-width:2px;
+	width:28%;
+}
+
+#search_table {
+	margin-left:23px;
+	width:100%;
+}
+
+#search_info {
+	margin-left:23px;
+	font-size:8pt;
+	margin-top:8pt;
+}
+
+#submit_area {
+	margin-left:23px;
+	margin-top:15px;
+}
+
+/*------result_area------------------------------------*/
+#result_area {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#result_table {
+	width:60%;
+}
+
+#result_table, .name, .plase, .year, .item {
+	border: #E3E3E3 solid;
+    border-width: 1px 1px 1px 1px;
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+	border: #E3E3E3 solid;
+    border-width: 1px 1px 1px 1px;
+    background: #F5F5F5;
+	font-weight:bold;
+}
+
+/*------footer------------------------------------*/
+#logout {
+	margin-top:15px;
+}
