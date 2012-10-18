@@ -14,6 +14,52 @@
  <body>
   <h1>美術館・博物館検索</h1>
   <div id="search_area">
+   <h:form>
+    <h:panelGrid id="search_table" columns="2">
+     <h:outputLabel for="museumnameInput">施設名：</h:outputLabel>
+     <h:inputText value="#{museum.name}" id="museumname" title="国立科学博物館"/>
+     <h:outputLabel for="placeInput">所在地(国名)：</h:outputLabel>
+     <h:inputText value="#{museum.password}" id="place" title="日本"/>
+          <h:outputLabel for="museumnameInput">設立年：</h:outputLabel>
+     <h:inputText value="#{museum.year}" id="year" title="1926"/>
+     <h:outputLabel for="placeInput">所蔵品：</h:outputLabel>
+     <h:inputText value="#{museum.items}" id="items" title="万年時計"/>
+    </h:panelGrid>
+    <div id="search_info">※いずれか1項目は必須入力です。</div>
+    <div id="submit_area">
+     <h:commandButton type="submit" id="send" value="検索" />
+     <h:commandButton type="reset" id="reset" value="リセット" />
+    </div>
+   </h:form>
+  </div>
+  <div id="result_area">
+  <h2>検索結果</h2>
+   <h:dataTable id="result_table" value="#{MuseumData.museum}" var="museum">
+     <h:column>
+      <f:facet name="header">
+       <h:outputText class="header" value="施設名"/>
+      </f:facet>
+      <h:outputText class="name" value="#{museum.name}"/>
+     </h:column>
+     <h:column>
+      <f:facet name="header">
+       <h:outputText class="header" value="所在地(国名)"/>
+      </f:facet>
+      <h:outputText class="place" value="#{museum.place}"/>
+     </h:column>
+     <h:column>
+      <f:facet name="header">
+       <h:outputText class="header" value="設立年"/>
+      </f:facet>
+      <h:outputText class="year" value="#{museum.year}"/>
+     </h:column>
+     <h:column>
+      <f:facet name="header">
+       <h:outputText class="header" value="所蔵品"/>
+      </f:facet>
+      <h:outputText class="items" value="#{museum.items}"/>
+     </h:column>
+    </h:dataTable>
   </div>
  </body>
 </html>
