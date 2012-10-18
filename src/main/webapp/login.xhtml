@@ -4,17 +4,17 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
-<head>
+<h:head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <title>美術館・博物館検索　ログイン</title>
- <link rel="stylesheet" href="resources/css/login.css" type="text/css">
-</head>
-<body>
+ <h:outputStylesheet library="css" name="login.css" target="head" />
+</h:head>
+<h:body>
  <h1>美術館・博物館検索　ログイン</h1>
  <h:form>
   <h:panelGrid id="login_table" columns="2">
     <h:outputLabel for="usernameInput">ユーザ名：</h:outputLabel>
-    <h:inputText value="#{user.id}" id="username" required="true" />
+    <h:inputText value="#{user.name}" id="username" required="true" />
     <h:outputLabel for="passwordInput">パスワード：</h:outputLabel>
     <h:inputSecret value="#{user.password}" id="password" required="true" />
   </h:panelGrid>
@@ -22,5 +22,5 @@
    <h:commandButton id="login_button" action="#{user.doLogin()}" value="ログイン" />
   </div>
  </h:form>
-</body>
+</h:body>
 </html>

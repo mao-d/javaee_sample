@@ -4,15 +4,15 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
- <head>
+ <h:head>
   <title>美術館・博物館検索　エラー</title>
-  <link rel="stylesheet" href="resources/css/error.css" type="text/css">
- </head>
- <body>
+  <h:outputStylesheet library="css" name="error.css" target="head" />
+ </h:head>
+ <h:body>
   <h1>Operation Error</h1>
   <div id="error_message">There are some errors in input to form. Please retry.</div>
- </body>
  <h:form id="back">
   <h:commandButton value="戻る" onClick="history.back()" />
  </h:form>
+ </h:body>
 </html>

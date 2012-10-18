@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
- <head>
+ <h:head>
   <title>美術館・博物館検索</title>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="resources/javascript/search.js"></script>
-  <link rel="stylesheet" href="resources/css/index.css" type="text/css">
- </head>
- <body>
+  <h:outputScript name="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" library="javax.faces" target="head"/>
+  <h:outputScript name="search.js" library="javax.faces" target="head"/>
+  <h:outputStylesheet library="css" name="search.css" target="head" />
+ </h:head>
+ <h:body>
   <h1>美術館・博物館検索</h1>
   <div id="search_area">
    <h:form>
@@ -61,5 +60,5 @@
      </h:column>
     </h:dataTable>
   </div>
- </body>
+ </h:body>
 </html>
