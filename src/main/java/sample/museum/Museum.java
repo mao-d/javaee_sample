@@ -1,5 +1,8 @@
 package sample.museum;
 
+import java.util.List;
+
+import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +16,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "findMuseumByPlace", query = "SELECT m FROM Museum m WHERE m.place = :place"),
     @NamedQuery(name = "findMuseumByYear", query = "SELECT m FROM Museum m WHERE m.year = :year")
 })
+@Named("museum")
 public class Museum {
 
     @Id @GeneratedValue
@@ -24,16 +28,32 @@ public class Museum {
     @Column(nullable = false)
     private String place;
 
-    @Column(length = 4)
-    private int year;
+    @Column(nullable = false, length = 4)
+    private Integer year;
+
+    private List<CollectedItem> itemList;
 
     public Museum() {
     }
 
-    public Museum(String name, String place, int year) {
+    public Museum(String name, String place, Integer year, List<CollectedItem> itemList) {
         setName(name);
         setPlace(place);
         setYear(year);
+        setItemList(itemList);
+    }
+
+    public String getItemListString() {
+        if (itemList.isEmpty()) {
+            return "";
+        }
+
+        String itemListStr = "";
+        for (CollectedItem item: itemList) {
+            itemListStr = itemListStr.concat(item.getItemName() + " ");
+        }
+
+        return itemListStr;
     }
 
     //-------getter/setter-------
@@ -57,16 +77,27 @@ public class Museum {
         return place;
     }
 
-
     public void setPlace(String Place) {
         this.place = Place;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public List<CollectedItem> getItemList() {
+        return itemList;
+    }
+
+    public void addItemList(CollectedItem item) {
+        itemList.add(item);
+    }
+
+    public void setItemList(List<CollectedItem> itemList) {
+        this.itemList = itemList;
     }
 }

@@ -6,8 +6,8 @@
     xmlns:f="http://java.sun.com/jsf/core">
  <h:head>
   <title>美術館・博物館検索</title>
-  <h:outputScript name="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" library="javax.faces" target="head"/>
-  <h:outputScript name="search.js" library="javax.faces" target="head"/>
+  <h:outputScript library="javascripts" name="jquery.min.js" target="head" />
+  <h:outputScript library="javascripts" name="search.js" target="head" />
   <h:outputStylesheet library="css" name="search.css" target="head" />
  </h:head>
  <h:body>
@@ -15,25 +15,25 @@
   <div id="search_area">
    <h:form>
     <h:panelGrid id="search_table" columns="2">
-     <h:outputLabel for="museumnameInput">施設名：</h:outputLabel>
+     <h:outputLabel for="name">施設名：</h:outputLabel>
      <h:inputText value="#{museum.name}" id="museumname" title="国立科学博物館"/>
-     <h:outputLabel for="placeInput">所在地(国名)：</h:outputLabel>
-     <h:inputText value="#{museum.password}" id="place" title="日本"/>
-          <h:outputLabel for="museumnameInput">設立年：</h:outputLabel>
+     <h:outputLabel for="place">所在地(国名)：</h:outputLabel>
+     <h:inputText value="#{museum.place}" id="place" title="日本"/>
+          <h:outputLabel for="year">設立年：</h:outputLabel>
      <h:inputText value="#{museum.year}" id="year" title="1926"/>
-     <h:outputLabel for="placeInput">所蔵品：</h:outputLabel>
-     <h:inputText value="#{museum.items}" id="items" title="万年時計"/>
+     <h:outputLabel for="itemList">所蔵品：</h:outputLabel>
+     <h:inputText value="#{museum.itemList}" id="items" title="万年時計"/>
     </h:panelGrid>
     <div id="search_info">※いずれか1項目は必須入力です。</div>
     <div id="submit_area">
-     <h:commandButton type="submit" id="send" value="検索" />
+     <h:commandButton action="#{search.doListMuseums(museum)}" id="send" value="検索" />
      <h:commandButton type="reset" id="reset" value="リセット" />
     </div>
    </h:form>
   </div>
   <div id="result_area">
   <h2>検索結果</h2>
-   <h:dataTable id="result_table" value="#{MuseumData.museum}" var="museum">
+   <h:dataTable id="result_table" value="#{Museum.museum}" var="museum">
      <h:column>
       <f:facet name="header">
        <h:outputText class="header" value="施設名"/>
@@ -60,5 +60,8 @@
      </h:column>
     </h:dataTable>
   </div>
+  <h:form>
+   <h:commandButton id="logout_button" action="#{user.doLogout()}" value="ログアウト" />
+  </h:form>
  </h:body>
 </html>

@@ -3,9 +3,15 @@ package sample.museum;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
-public class CollectedItems {
+@NamedQueries({
+    @NamedQuery(name = "findItemsById", query = "SELECT i FROM Museum i WHERE i.id = :id"),
+    @NamedQuery(name = "findItemsByItemName", query = "SELECT i FROM Museum i WHERE i.name = :name")
+})
+public class CollectedItem {
 
     @Id
     private Long id;
@@ -13,12 +19,12 @@ public class CollectedItems {
     @Column(nullable = false)
     private String itemName;
 
-    public CollectedItems() {
+    public CollectedItem() {
     }
 
-    public CollectedItems(Long id, String itemName) {
-        this.id = id;
-        this.itemName = itemName;
+    public CollectedItem(Long id, String itemName) {
+        setId(id);
+        setItemName(itemName);
     }
 
     //-------getter/setter-------

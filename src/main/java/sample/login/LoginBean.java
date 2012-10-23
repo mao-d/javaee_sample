@@ -7,22 +7,26 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import sample.log.Logged;
+
 @Named("user")
 @SessionScoped
 public class LoginBean implements Serializable {
 
-    private static long serialVersionUID = 6455930392684901518L;
-
+    private static final long serialVersionUID = 2911662111731625006L;
     private String name;
     private String password;
 
-    // TODO Logs
+    @Logged
     public String doLogin() {
     	// ç°ÇÕîFèÿÇÕçsÇÌÇ∏ëfí ÇË
+        if(name.equals("") || password.equals("")) {
+            return "operation_error.xhtml";
+        }
     	return "search.xhtml";
     }
 
-    // TODO Logs
+    @Logged
     public String doLogout() {
         //invalidate user session
         FacesContext context = FacesContext.getCurrentInstance();

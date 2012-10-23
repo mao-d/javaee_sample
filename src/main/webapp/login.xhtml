@@ -14,9 +14,9 @@
  <h:form>
   <h:panelGrid id="login_table" columns="2">
     <h:outputLabel for="usernameInput">ユーザ名：</h:outputLabel>
-    <h:inputText value="#{user.name}" id="username" required="true" />
+    <h:inputText value="#{user.name}" id="username" required="false" />
     <h:outputLabel for="passwordInput">パスワード：</h:outputLabel>
-    <h:inputSecret value="#{user.password}" id="password" required="true" />
+    <h:inputSecret value="#{user.password}" id="password" required="false" />
   </h:panelGrid>
   <div id="submit_area">
    <h:commandButton id="login_button" action="#{user.doLogin()}" value="ログイン" />
