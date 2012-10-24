@@ -2,41 +2,36 @@ package sample.museum;
 
 import java.util.List;
 
-import javax.inject.Named;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({
-    @NamedQuery(name = "findMuseumByName", query = "SELECT m FROM Museum m WHERE m.name LIKE :name"),
-    @NamedQuery(name = "findMuseumByPlace", query = "SELECT m FROM Museum m WHERE m.place = :place"),
-    @NamedQuery(name = "findMuseumByYear", query = "SELECT m FROM Museum m WHERE m.year = :year")
-})
-@Named("museum")
 public class Museum {
 
     @Id @GeneratedValue
+    @Column(name = "museum_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "place", nullable = false)
     private String place;
 
-    @Column(nullable = false, length = 4)
-    private Integer year;
+    @Column(name = "year", nullable = false, length = 4)
+    private String year;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "museum")
     private List<CollectedItem> itemList;
 
     public Museum() {
     }
 
-    public Museum(String name, String place, Integer year, List<CollectedItem> itemList) {
+    public Museum(String name, String place, String year, List<CollectedItem> itemList) {
         setName(name);
         setPlace(place);
         setYear(year);
@@ -81,11 +76,11 @@ public class Museum {
         this.place = Place;
     }
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

@@ -3,28 +3,29 @@ package sample.museum;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-@NamedQueries({
-    @NamedQuery(name = "findItemsById", query = "SELECT i FROM Museum i WHERE i.id = :id"),
-    @NamedQuery(name = "findItemsByItemName", query = "SELECT i FROM Museum i WHERE i.name = :name")
-})
 public class CollectedItem {
 
     @Id
+    @Column(name = "museum_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "itemName", nullable = false)
     private String itemName;
+
+    @JoinColumn(name = "museum_id", referencedColumnName="museum_id", nullable = false)
+    @ManyToOne
+    private Museum museum;
 
     public CollectedItem() {
     }
 
-    public CollectedItem(Long id, String itemName) {
+    public CollectedItem(Long id, String itemNames) {
         setId(id);
-        setItemName(itemName);
+        setItemName(itemNames);
     }
 
     //-------getter/setter-------
@@ -42,5 +43,13 @@ public class CollectedItem {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public Museum getMuseum() {
+        return museum;
+    }
+
+    public void setMuseum(Museum museum) {
+        this.museum = museum;
     }
 }
