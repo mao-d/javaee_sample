@@ -19,7 +19,8 @@ public class LoginBean implements Serializable {
 
     @Logged
     public String doLogin() {
-    	// 今は認証は行わず素通り
+    	// IDとパスワードをDBに照会し認証を行う。
+        // 現時点では認証は行なっていない。
         if(name.equals("") || password.equals("")) {
             return "operation_error.xhtml";
         }
@@ -28,11 +29,9 @@ public class LoginBean implements Serializable {
 
     @Logged
     public String doLogout() {
-        //invalidate user session
+        //invalidate http session
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-        name = "";
-        password = "";
         session.invalidate();
         return "login.xhtml";
     }

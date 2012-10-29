@@ -2,6 +2,7 @@ package sample.museum;
 
 import java.util.List;
 
+import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
+@Named("museum")
 public class Museum {
 
     @Id @GeneratedValue
     @Column(name = "museum_id", nullable = false)
-    private Long id;
+    private Long museum_id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -22,7 +24,7 @@ public class Museum {
     @Column(name = "place", nullable = false)
     private String place;
 
-    @Column(name = "year", nullable = false, length = 4)
+    @Column(name = "open_year", nullable = false, length = 4)
     private String year;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "museum")
@@ -38,26 +40,13 @@ public class Museum {
         setItemList(itemList);
     }
 
-    public String getItemListString() {
-        if (itemList.isEmpty()) {
-            return "";
-        }
-
-        String itemListStr = "";
-        for (CollectedItem item: itemList) {
-            itemListStr = itemListStr.concat(item.getItemName() + " ");
-        }
-
-        return itemListStr;
-    }
-
     //-------getter/setter-------
     public Long getId() {
-        return id;
+        return museum_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.museum_id = id;
     }
 
     public String getName() {

@@ -1,22 +1,28 @@
 package sample.museum;
 
+import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@IdClass(CollectedItemPK.class)
 @Entity
+@Named("collectedItem")
 public class CollectedItem {
 
     @Id
     @Column(name = "museum_id", nullable = false)
-    private Long id;
+    private Long museum_id;
 
-    @Column(name = "itemName", nullable = false)
-    private String itemName;
+    @Id
+    @Column(name = "item_name", nullable = false)
+    private String item_name;
 
-    @JoinColumn(name = "museum_id", referencedColumnName="museum_id", nullable = false)
+    @JoinColumn(name = "museum_id", referencedColumnName="museum_id", nullable = false,
+            insertable = false, updatable = false)
     @ManyToOne
     private Museum museum;
 
@@ -30,19 +36,19 @@ public class CollectedItem {
 
     //-------getter/setter-------
     public Long getId() {
-        return id;
+        return museum_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.museum_id = id;
     }
 
     public String getItemName() {
-        return itemName;
+        return item_name;
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.item_name = itemName;
     }
 
     public Museum getMuseum() {
