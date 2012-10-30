@@ -2,6 +2,7 @@ package sample.museum;
 
 import java.util.List;
 
+import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,9 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 @Named("museum")
+@RequestScoped
 public class Museum {
 
     @Id @GeneratedValue
@@ -19,15 +22,19 @@ public class Museum {
     private Long museum_id;
 
     @Column(name = "name", nullable = false)
+    @Size(max = 30)
     private String name;
 
     @Column(name = "place", nullable = false)
+    @Size(max = 30)
     private String place;
 
     @Column(name = "open_year", nullable = false, length = 4)
+    @Size(max = 4)
     private String year;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "museum")
+    @Size(max = 30)
     private List<CollectedItem> itemList;
 
     public Museum() {

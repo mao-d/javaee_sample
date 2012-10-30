@@ -1,5 +1,6 @@
 package sample.museum;
 
+import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,10 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 @IdClass(CollectedItemPK.class)
 @Entity
 @Named("collectedItem")
+@RequestScoped
 public class CollectedItem {
 
     @Id
@@ -19,6 +22,7 @@ public class CollectedItem {
 
     @Id
     @Column(name = "item_name", nullable = false)
+    @Size(max = 30)
     private String item_name;
 
     @JoinColumn(name = "museum_id", referencedColumnName="museum_id", nullable = false,
