@@ -30,14 +30,18 @@ public class MuseumEJB {
 
     @Logged
     private TypedQuery<Museum> createQuery(Museum museum) {
-        // TODO コメント
         String queryStr = "SELECT "+ EJBUtility.MUSEUM_ACCESS +" FROM Museum "+ EJBUtility.MUSEUM_ACCESS +" WHERE";
+
+        // Where句の作成
         StringBuffer whereStr = new StringBuffer();
         whereStr = EJBUtility.createWhereString(EJBUtility.NAMES_KEYWORD, EJBUtility.MUSEUM_ACCESS, museum.getName(), whereStr, QueryType.LIKE);
         whereStr = EJBUtility.createWhereString(EJBUtility.PlACES_KEYWORD, EJBUtility.MUSEUM_ACCESS, museum.getPlace(), whereStr, QueryType.LIKE);
         whereStr = EJBUtility.createWhereString(EJBUtility.YEARS_KEYWORD, EJBUtility.MUSEUM_ACCESS, museum.getYear(), whereStr, QueryType.EQUALS);
 
+        // 検索クエリの作成
         TypedQuery<Museum> query = entityManager.createQuery(queryStr + whereStr, Museum.class);
+
+        // JPQL内のパラメータの設定
         setParameter(EJBUtility.NAMES_KEYWORD, museum.getName(), query, QueryType.LIKE);
         setParameter(EJBUtility.PlACES_KEYWORD, museum.getPlace(), query, QueryType.LIKE);
         setParameter(EJBUtility.YEARS_KEYWORD, museum.getYear(), query, QueryType.EQUALS);
