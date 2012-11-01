@@ -17,24 +17,24 @@
    <h:form>
     <h:panelGrid id="search_table" columns="2">
      <h:outputLabel for="name">施設名：</h:outputLabel>
-     <h:inputText value="#{museum.name}" id="museumname" maxlength = "30" title="国立科学博物館"/>
+     <h:inputText value="#{museumController.museum.name}" id="museumname" maxlength = "30" title="国立科学博物館"/>
      <h:outputLabel for="place">所在地(国名)：</h:outputLabel>
-     <h:inputText value="#{museum.place}" id="place" maxlength = "30" title="日本"/>
+     <h:inputText value="#{museumController.museum.place}" id="place" maxlength = "30" title="日本"/>
           <h:outputLabel for="year">設立年：</h:outputLabel>
-     <h:inputText value="#{museum.year}" id="year" maxlength = "4" title="1926"/>
-     <h:outputLabel for="itemList">所蔵品：</h:outputLabel>
-     <h:inputText value="#{collectedItem.item_name}" maxlength = "30" id="item" title="万年時計"/>
+     <h:inputText value="#{museumController.museum.year}" id="year" maxlength = "4" title="1926"/>
+     <h:outputLabel for="item_name">所蔵品：</h:outputLabel>
+     <h:inputText value="#{museumController.collectedItem.item_name}" maxlength = "30" id="item" title="万年時計"/>
     </h:panelGrid>
     <div id="search_info">※いずれか1項目は必須入力です。</div>
     <div id="submit_area">
-     <h:commandButton action="#{search.doListMuseums()}" id="send" value="検索" />
+     <h:commandButton action="#{museumController.doListMuseums()}" id="send" value="検索" />
      <h:commandButton type="reset" id="reset" value="リセット" />
     </div>
    </h:form>
   </div>
   <div id="result_area">
   <h2>検索結果</h2>
-   <h:dataTable id="result_table" value="#{MuseumController.museumList}" var="museum">
+   <h:dataTable id="result_table" value="#{museumController.museumList}" var="museum">
      <h:column>
       <f:facet name="header">
        <h:outputText class="header" value="施設名"/>
@@ -57,7 +57,7 @@
       <f:facet name="header">
        <h:outputText class="header" value="所蔵品"/>
       </f:facet>
-      <h:outputText class="items" value="#{museum.items}">
+      <h:outputText class="items" value="#{museum.itemList}">
        <f:converter converterId="stringConverter"/>
       </h:outputText>
      </h:column>

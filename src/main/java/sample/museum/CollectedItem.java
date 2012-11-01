@@ -35,7 +35,7 @@ public class CollectedItem {
 
     public CollectedItem(Long id, String itemNames) {
         setId(id);
-        setItemName(itemNames);
+        setItem_name(itemNames);
     }
 
     //-------getter/setter-------
@@ -47,11 +47,11 @@ public class CollectedItem {
         this.museum_id = id;
     }
 
-    public String getItemName() {
+    public String getItem_name() {
         return item_name;
     }
 
-    public void setItemName(String itemName) {
+    public void setItem_name(String itemName) {
         this.item_name = itemName;
     }
 

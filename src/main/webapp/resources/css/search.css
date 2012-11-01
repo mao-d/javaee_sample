@@ -40,10 +40,10 @@ body {
 }
 
 #result_table, .name, .plase, .year, .item {
-	border: #E3E3E3 solid;
+	/*border: #E3E3E3 solid;
     border-width: 1px 1px 1px 1px;
 	border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: 0;*/
 }
 
 th {

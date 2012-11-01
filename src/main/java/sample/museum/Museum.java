@@ -3,7 +3,6 @@ package sample.museum;
 import java.util.List;
 
 import javax.faces.bean.RequestScoped;
-import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 @Entity
-@Named("museum")
 @RequestScoped
 public class Museum {
 

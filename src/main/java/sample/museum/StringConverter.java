@@ -21,7 +21,7 @@ public class StringConverter implements Converter {
         List<CollectedItem> collectedItems = new ArrayList<CollectedItem>();
         for (String item: itemArray) {
             CollectedItem collectedItem = new CollectedItem();
-            collectedItem.setItemName(item);
+            collectedItem.setItem_name(item);
             collectedItems.add(collectedItem);
         }
         return collectedItems;
@@ -44,7 +44,7 @@ public class StringConverter implements Converter {
             if (itemListStr.length() > 0) {
                 itemListStr = itemListStr.append(", ");
             }
-            itemListStr = itemListStr.append(item.getItemName());
+            itemListStr = itemListStr.append(item.getItem_name());
         }
         return itemListStr.toString();
     }

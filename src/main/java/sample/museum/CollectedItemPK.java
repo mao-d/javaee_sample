@@ -12,7 +12,7 @@ public class CollectedItemPK implements Serializable {
 
     public CollectedItemPK(Long museum_id, String item_name) {
         setMuseumId(museum_id);
-        setItemName(item_name);
+        setItem_name(item_name);
     }
 
     public int hashCode() {
@@ -39,11 +39,11 @@ public class CollectedItemPK implements Serializable {
             return false;
         }
 
-        if (item_name != null && ! item_name.equals(itemPK.getItemName())) {
+        if (item_name != null && ! item_name.equals(itemPK.getItem_name())) {
             return false;
         }
 
-        if (item_name == null && itemPK.getItemName() != null) {
+        if (item_name == null && itemPK.getItem_name() != null) {
             return false;
         }
 
@@ -59,11 +59,11 @@ public class CollectedItemPK implements Serializable {
         this.museum_id = museum_id;
     }
 
-    public String getItemName() {
+    public String getItem_name() {
         return item_name;
     }
 
-    public void setItemName(String item_name) {
+    public void setItem_name(String item_name) {
         this.item_name = item_name;
     }
 }
