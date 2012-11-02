@@ -11,6 +11,8 @@
  <h:body>
   <h1>エラー</h1>
   <div id="error_message">入力内容が間違っています。もう一度入力して下さい。</div>
- <p><a href="faces/search.xhtml">検索画面に戻る</a></p>
+  <h:form>
+ <p><h:commandLink action="#{museumController.doReturn()}">検索画面に戻る</h:commandLink></p>
+ </h:form>
  </h:body>
 </html>

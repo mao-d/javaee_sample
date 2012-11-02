@@ -60,6 +60,11 @@ public class MuseumController {
         return "search.xhtml";
     }
 
+    @Logged
+    public String doReturn() {
+        return "search.xhtml";
+    }
+
     //-------getter/setter-------
     public Museum getMuseum() {
         return museum;
