@@ -53,6 +53,13 @@ public class MuseumController {
         return "search.xhtml";
     }
 
+    @Logged
+    public String doReset() {
+        museum = new Museum();
+        collectedItem = new CollectedItem();
+        return "search.xhtml";
+    }
+
     //-------getter/setter-------
     public Museum getMuseum() {
         return museum;

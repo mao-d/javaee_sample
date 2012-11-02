@@ -42,7 +42,7 @@ public class CollectedItemEJB {
         whereStr = EJBUtility.createWhereString(EJBUtility.NAMES_KEYWORD, EJBUtility.MUSEUM_ACCESS, museum.getName(), whereStr, QueryType.LIKE);
         whereStr = EJBUtility.createWhereString(EJBUtility.PlACES_KEYWORD, EJBUtility.MUSEUM_ACCESS, museum.getPlace(), whereStr, QueryType.LIKE);
         whereStr = EJBUtility.createWhereString(EJBUtility.YEARS_KEYWORD, EJBUtility.MUSEUM_ACCESS, museum.getYear(), whereStr, QueryType.EQUALS);
-        whereStr = EJBUtility.createWhereString(EJBUtility.ITEM_KEYWORD, EJBUtility.ITEM_ACCESS, itemName, whereStr, QueryType.EQUALS);
+        whereStr = EJBUtility.createWhereString(EJBUtility.ITEM_KEYWORD, EJBUtility.ITEM_ACCESS, itemName, whereStr, QueryType.LIKE);
 
         // åüçıÉNÉGÉäÇÃçÏê¨
         TypedQuery<CollectedItem> query = entityManager.createQuery(queryStr + whereStr, CollectedItem.class);
@@ -51,7 +51,7 @@ public class CollectedItemEJB {
         setParameter(EJBUtility.NAMES_KEYWORD, museum.getName(), query, QueryType.LIKE);
         setParameter(EJBUtility.PlACES_KEYWORD, museum.getPlace(), query, QueryType.LIKE);
         setParameter(EJBUtility.YEARS_KEYWORD, museum.getYear(), query, QueryType.EQUALS);
-        setParameter(EJBUtility.ITEM_KEYWORD, itemName, query, QueryType.EQUALS);
+        setParameter(EJBUtility.ITEM_KEYWORD, itemName, query, QueryType.LIKE);
 
         return query;
     }
